@@ -4,9 +4,7 @@
 <head>
 
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>WindiSunENERGY</title>
 
@@ -25,11 +23,10 @@ body{
 background:#020617;
 color:white;
 padding:20px;
-overflow-x:hidden;
 }
 
 .container{
-max-width:1700px;
+max-width:1600px;
 margin:auto;
 }
 
@@ -43,28 +40,27 @@ margin-bottom:20px;
 .logo{
 font-size:42px;
 font-weight:bold;
-color:#38bdf8;
+color:#00c3ff;
 }
 
 .datetime{
 text-align:right;
 color:#4ade80;
-font-size:18px;
 font-weight:bold;
+font-size:18px;
 }
 
 .card{
 background:#07122b;
 border:1px solid #16315f;
-border-radius:22px;
+border-radius:20px;
 padding:25px;
 margin-bottom:25px;
-box-shadow:0 0 20px rgba(0,0,0,0.3);
 }
 
 .card h2{
+color:#00c3ff;
 margin-bottom:20px;
-color:#38bdf8;
 }
 
 .form-grid{
@@ -73,9 +69,9 @@ grid-template-columns:repeat(3,1fr);
 gap:20px;
 }
 
-.results-grid{
+.param-grid{
 display:grid;
-grid-template-columns:repeat(2,1fr);
+grid-template-columns:repeat(4,1fr);
 gap:20px;
 }
 
@@ -90,9 +86,9 @@ font-weight:bold;
 }
 
 input,select{
-padding:13px;
+padding:12px;
 border:none;
-border-radius:12px;
+border-radius:10px;
 background:#e2e8f0;
 font-size:16px;
 width:100%;
@@ -111,9 +107,9 @@ border-bottom:1px solid #1e3a5f;
 }
 
 .add-btn{
-background:#22c55e;
+background:#4ade80;
 border:none;
-padding:12px 22px;
+padding:12px 20px;
 border-radius:12px;
 font-weight:bold;
 cursor:pointer;
@@ -124,34 +120,26 @@ margin-bottom:20px;
 .delete-btn{
 background:#ef4444;
 border:none;
-padding:10px 15px;
+padding:8px 14px;
 border-radius:10px;
-cursor:pointer;
 color:white;
-font-weight:bold;
-transition:0.3s;
-}
-
-.delete-btn:hover{
-background:#dc2626;
-transform:scale(1.05);
+cursor:pointer;
 }
 
 .action-buttons{
 display:flex;
 gap:20px;
 margin-top:20px;
-flex-wrap:wrap;
 }
 
 .action-buttons button{
-padding:14px 24px;
+padding:14px 25px;
 border:none;
 border-radius:12px;
 font-weight:bold;
-font-size:16px;
 cursor:pointer;
 color:white;
+font-size:16px;
 }
 
 .analyze-btn{
@@ -162,33 +150,50 @@ background:#22c55e;
 background:#2563eb;
 }
 
+.results-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+}
+
 .result-box{
 background:#0b1733;
 border:1px solid #2d4d7d;
-border-radius:20px;
-padding:24px;
+border-radius:18px;
+padding:25px;
 text-align:center;
 }
 
 .result-box h3{
-margin-bottom:12px;
+margin-bottom:15px;
 }
 
 .result-value{
 font-size:30px;
 font-weight:bold;
-color:white;
+color:#ffffff;
+}
+
+.recommend-box{
+background:#081f45;
+padding:20px;
+border-radius:16px;
+border:2px solid #2563eb;
+font-weight:bold;
+}
+
+.warning-box{
+background:#7f1d1d;
+padding:20px;
+border-radius:16px;
+border:2px solid #ef4444;
+font-weight:bold;
 }
 
 canvas{
-background:#081325;
-border-radius:22px;
-}
-
-#solarPathCanvas{
-width:100%;
-height:420px;
-display:block;
+background:#0b1733;
+border-radius:20px;
+padding:20px;
 }
 
 .footer{
@@ -197,13 +202,10 @@ margin-top:30px;
 font-weight:bold;
 }
 
-.hidden-parameters{
-display:none;
-}
-
 @media(max-width:1100px){
 
 .form-grid,
+.param-grid,
 .results-grid{
 grid-template-columns:repeat(2,1fr);
 }
@@ -213,6 +215,7 @@ grid-template-columns:repeat(2,1fr);
 @media(max-width:700px){
 
 .form-grid,
+.param-grid,
 .results-grid{
 grid-template-columns:1fr;
 }
@@ -235,8 +238,7 @@ grid-template-columns:1fr;
 WindiSunENERGY
 </div>
 
-<div class="datetime"
-id="datetime"></div>
+<div class="datetime" id="datetime"></div>
 
 </div>
 
@@ -249,30 +251,47 @@ id="datetime"></div>
 <div class="form-grid">
 
 <div class="input-group">
+
 <label>Client Name</label>
-<input id="clientName">
+
+<input
+id="clientName"
+placeholder="Client name">
+
 </div>
 
 <div class="input-group">
+
 <label>Phone Number</label>
-<input id="clientPhone"
+
+<input
+id="phoneNumber"
 placeholder="+233 XX XXX XXXX">
+
 </div>
 
 <div class="input-group">
+
 <label>Email Address</label>
-<input id="clientEmail"
-type="email"
+
+<input
+id="emailAddress"
 placeholder="client@email.com">
+
 </div>
 
 <div class="input-group">
+
 <label>Project Date</label>
-<input id="projectDate"
-type="date">
+
+<input
+type="date"
+id="projectDate">
+
 </div>
 
 <div class="input-group">
+
 <label>Project Type</label>
 
 <select id="projectType">
@@ -286,6 +305,7 @@ type="date">
 </div>
 
 <div class="input-group">
+
 <label>Operation Mode</label>
 
 <select id="operationMode">
@@ -299,16 +319,6 @@ type="date">
 </div>
 
 </div>
-
-</div>
-
-<!-- SOLAR PATH -->
-
-<div class="card">
-
-<h2>Solar Path Tracking</h2>
-
-<canvas id="solarPathCanvas"></canvas>
 
 </div>
 
@@ -348,29 +358,45 @@ Add Device
 
 </div>
 
-<!-- HIDDEN PARAMETERS -->
-
-<div class="hidden-parameters">
-
-<input id="panelWattage">
-
-<input id="systemVoltage">
-
-<input id="batteryDod">
-
-<input id="energyEfficiency">
-
-<input id="inverterEfficiency">
-
-<input id="autonomyDays">
-
-<input id="sunHours">
-
-</div>
-
-<!-- ACTIONS -->
+<!-- PARAMETERS -->
 
 <div class="card">
+
+<h2>Advanced Solar Parameters</h2>
+
+<div class="param-grid">
+
+<div class="input-group">
+<label>Solar Panel Wattage (W)</label>
+<input id="panelWattage">
+</div>
+
+<div class="input-group">
+<label>System Voltage (V)</label>
+<input id="systemVoltage">
+</div>
+
+<div class="input-group">
+<label>Battery DOD (%)</label>
+<input id="batteryDod">
+</div>
+
+<div class="input-group">
+<label>Energy Efficiency (%)</label>
+<input id="energyEfficiency">
+</div>
+
+<div class="input-group">
+<label>Inverter Efficiency (%)</label>
+<input id="inverterEfficiency">
+</div>
+
+<div class="input-group">
+<label>Autonomy Days</label>
+<input id="autonomyDays">
+</div>
+
+</div>
 
 <div class="action-buttons">
 
@@ -400,56 +426,74 @@ Export PDF
 <div class="results-grid">
 
 <div class="result-box">
-
 <h3>Total Power</h3>
-
-<div class="result-value"
-id="totalPower">
-
-0 W
-
-</div>
-
+<div class="result-value" id="totalPower">0 W</div>
 </div>
 
 <div class="result-box">
-
 <h3>Total Energy</h3>
-
-<div class="result-value"
-id="totalEnergy">
-
-0 kWh
-
-</div>
-
+<div class="result-value" id="totalEnergy">0 kWh</div>
 </div>
 
 <div class="result-box">
-
 <h3>Day Energy</h3>
-
-<div class="result-value"
-id="dayEnergy">
-
-0 kWh
-
-</div>
-
+<div class="result-value" id="dayEnergy">0 kWh</div>
 </div>
 
 <div class="result-box">
-
 <h3>Night Energy</h3>
+<div class="result-value" id="nightEnergy">0 kWh</div>
+</div>
 
-<div class="result-value"
-id="nightEnergy">
+<div class="result-box">
+<h3>Recommended Inverter</h3>
+<div class="result-value" id="recommendedInverter">0 kW</div>
+</div>
 
-0 kWh
+<div class="result-box">
+<h3>Solar Panels</h3>
+<div class="result-value" id="solarPanels">0</div>
+</div>
+
+<div class="result-box">
+<h3>Battery Capacity</h3>
+<div class="result-value" id="batteryCapacity">0 kWh</div>
+</div>
+
+<div class="result-box">
+<h3>Recommended ESS</h3>
+<div class="result-value" id="recommendedESS">
+0
+</div>
+</div>
+
+</div>
+
+</div>
+
+<!-- RECOMMENDATIONS -->
+
+<div class="card">
+
+<h2>Recommendations</h2>
+
+<div class="recommend-box" id="recommendations">
+
+System analysis completed.
 
 </div>
 
 </div>
+
+<!-- WARNINGS -->
+
+<div class="card">
+
+<h2>System Warnings</h2>
+
+<div class="warning-box" id="warnings">
+
+No warnings detected.
 
 </div>
 
@@ -466,9 +510,7 @@ id="nightEnergy">
 </div>
 
 <div class="footer">
-
 WindiSunENERGY ©️
-
 </div>
 
 </div>
@@ -483,10 +525,8 @@ function updateDateTime(){
 
 const now = new Date();
 
-document.getElementById(
-"datetime"
-).innerHTML =
-
+document.getElementById("datetime")
+.innerHTML =
 now.toLocaleDateString()
 +
 "<br>"
@@ -502,56 +542,36 @@ updateDateTime();
 // ADD DEVICE
 
 function addDevice(
-device="",
-power=0,
-qty=0,
-day=0,
-night=0
+device,
+power,
+qty,
+day,
+night
 ){
 
 const table =
-document.getElementById(
-"deviceTableBody"
-);
+document.getElementById("deviceTableBody");
 
 const row =
 document.createElement("tr");
 
 row.innerHTML = `
 
-<td>
-<input value="${device}">
-</td>
+<td><input value="${device}"></td>
+
+<td><input type="number" value="${power}"></td>
+
+<td><input type="number" value="${qty}"></td>
+
+<td><input type="number" value="${day}"></td>
+
+<td><input type="number" value="${night}"></td>
 
 <td>
-<input type="number"
-value="${power}">
-</td>
-
-<td>
-<input type="number"
-value="${qty}">
-</td>
-
-<td>
-<input type="number"
-value="${day}">
-</td>
-
-<td>
-<input type="number"
-value="${night}">
-</td>
-
-<td>
-
 <button class="delete-btn"
-onclick="deleteRow(this)">
-
-✖
-
+onclick="this.parentElement.parentElement.remove()">
+X
 </button>
-
 </td>
 
 `;
@@ -562,66 +582,57 @@ table.appendChild(row);
 
 function addEmptyDevice(){
 
-addDevice();
+addDevice("",0,0,0,0);
 
 }
 
-function deleteRow(button){
-
-button.parentElement.parentElement.remove();
-
-}
-
-// WINDOW LOAD
+// AUTO LOAD
 
 window.onload = function(){
 
-addEmptyDevice();
+document.getElementById("clientName").value =
+"Accra Residential Project";
 
-drawSolarPath();
+document.getElementById("phoneNumber").value =
+"+233 55 123 4567";
 
-// AUTO DATE
+document.getElementById("emailAddress").value =
+"client@email.com";
 
-document.getElementById(
-"projectDate"
-).value =
-new Date()
-.toISOString()
-.split('T')[0];
+document.getElementById("projectDate").value =
+new Date().toISOString().split('T')[0];
 
-// HIDDEN PARAMETERS
+document.getElementById("projectType").value =
+"Residential";
 
-document.getElementById(
-"panelWattage"
-).value = 615;
+document.getElementById("operationMode").value =
+"OFF-GRID";
 
-document.getElementById(
-"systemVoltage"
-).value = 48;
+addDevice("Corridor",30,2,2,6);
+addDevice("WC",25,2,0,0.25);
+addDevice("Inside light",25,19,4,6);
+addDevice("Microwave",1230,1,0.3,0.3);
+addDevice("Outside lights",30,10,0,10);
+addDevice("Washing Machine",2400,1,1,0);
+addDevice("Water Pump Machine",1600,1,1,0);
+addDevice("Submersible Pump",2600,1,0.4,0.3);
+addDevice("Air Conditioning",2100,3,3,5);
+addDevice("Freeze",650,1,5,5);
+addDevice("TV",550,1,4,5);
+addDevice("Blender",1300,1,0.15,0.15);
+addDevice("Kettle",2100,1,0.2,0.2);
+addDevice("Electric Iron",2400,1,0.2,0);
 
-document.getElementById(
-"batteryDod"
-).value = 80;
+document.getElementById("panelWattage").value = 615;
+document.getElementById("systemVoltage").value = 48;
+document.getElementById("batteryDod").value = 80;
+document.getElementById("energyEfficiency").value = 85;
+document.getElementById("inverterEfficiency").value = 95;
+document.getElementById("autonomyDays").value = 1;
 
-document.getElementById(
-"energyEfficiency"
-).value = 85;
-
-document.getElementById(
-"inverterEfficiency"
-).value = 95;
-
-document.getElementById(
-"autonomyDays"
-).value = 1;
-
-document.getElementById(
-"sunHours"
-).value = 5;
+calculateSystem();
 
 };
-
-// CALCULATIONS
 
 function calculateSystem(){
 
@@ -643,16 +654,16 @@ const inputs =
 row.querySelectorAll("input");
 
 const power =
-parseFloat(inputs[1].value)||0;
+parseFloat(inputs[1].value);
 
 const qty =
-parseFloat(inputs[2].value)||0;
+parseFloat(inputs[2].value);
 
 const hrsDay =
-parseFloat(inputs[3].value)||0;
+parseFloat(inputs[3].value);
 
 const hrsNight =
-parseFloat(inputs[4].value)||0;
+parseFloat(inputs[4].value);
 
 const devicePower =
 power * qty;
@@ -669,47 +680,210 @@ totalDay += energyDay;
 
 totalNight += energyNight;
 
-labels.push(
-inputs[0].value || "Device"
-);
+labels.push(inputs[0].value);
 
 values.push(
-((energyDay+energyNight)/1000)
-.toFixed(2)
+((energyDay + energyNight)/1000).toFixed(2)
 );
 
 });
 
+// PARAMETERS
+
+const panelWattage =
+parseFloat(
+document.getElementById("panelWattage").value
+);
+
+const dod =
+parseFloat(
+document.getElementById("batteryDod").value
+)/100;
+
+const energyEfficiency =
+parseFloat(
+document.getElementById("energyEfficiency").value
+)/100;
+
+const inverterEfficiency =
+parseFloat(
+document.getElementById("inverterEfficiency").value
+)/100;
+
+const autonomyDays =
+parseFloat(
+document.getElementById("autonomyDays").value
+);
+
 // TOTAL ENERGY
 
 const totalEnergy =
-(totalDay+totalNight)/1000;
+(totalDay + totalNight)/1000;
+
+// INVERTER POWER
+
+const inverterPower =
+totalPower * 1.2;
+
+// BATTERY CAPACITY
+
+const batteryCapacity =
+(
+totalEnergy
+*
+autonomyDays
+)
+/
+(
+energyEfficiency
+*
+inverterEfficiency
+*
+dod
+);
+
+// ESS LOGIC
+
+let ess = "";
+let essPowerKw = 30;
+
+if(
+batteryCapacity <= 60
+){
+
+ess = "30kW / 60kWh";
+essPowerKw = 30;
+
+}
+else if(
+batteryCapacity <= 105
+){
+
+ess = "50kW / 105kWh";
+essPowerKw = 50;
+
+}
+else if(
+batteryCapacity <= 128
+&&
+inverterPower <= 50000
+){
+
+ess = "50kW / 128kWh";
+essPowerKw = 50;
+
+}
+else if(
+batteryCapacity <= 128
+&&
+inverterPower <= 64000
+){
+
+ess = "64kW / 128kWh";
+essPowerKw = 64;
+
+}
+else{
+
+ess = "100kW / 225kWh";
+essPowerKw = 100;
+
+}
+
+// PANELS USING ESS POWER
+
+const numberOfPanels =
+Math.ceil(
+(
+essPowerKw * 1000
+)
+/
+panelWattage
+);
 
 // RESULTS
 
-document.getElementById(
-"totalPower"
-).innerHTML =
+document.getElementById("totalPower")
+.innerHTML =
 totalPower.toFixed(0)
 + " W";
 
-document.getElementById(
-"totalEnergy"
-).innerHTML =
+document.getElementById("totalEnergy")
+.innerHTML =
 totalEnergy.toFixed(1)
 + " kWh";
 
-document.getElementById(
-"dayEnergy"
-).innerHTML =
+document.getElementById("dayEnergy")
+.innerHTML =
 (totalDay/1000).toFixed(1)
 + " kWh";
 
-document.getElementById(
-"nightEnergy"
-).innerHTML =
+document.getElementById("nightEnergy")
+.innerHTML =
 (totalNight/1000).toFixed(1)
 + " kWh";
+
+document.getElementById("recommendedInverter")
+.innerHTML =
+(inverterPower/1000).toFixed(1)
++ " kW";
+
+document.getElementById("solarPanels")
+.innerHTML =
+numberOfPanels;
+
+document.getElementById("batteryCapacity")
+.innerHTML =
+batteryCapacity.toFixed(1)
++ " kWh";
+
+document.getElementById("recommendedESS")
+.innerHTML =
+ess;
+
+// RECOMMENDATIONS
+
+document.getElementById("recommendations")
+.innerHTML =
+
+"Recommended system : "
++
+numberOfPanels
++
+" × "
++
+panelWattage
++
+"W solar panels, "
++
+ess
++
+", "
++
+batteryCapacity.toFixed(1)
++
+"kWh battery storage and "
++
+(inverterPower/1000).toFixed(1)
++
+"kW inverter.";
+
+// WARNINGS
+
+if(totalEnergy > 100){
+
+document.getElementById("warnings")
+.innerHTML =
+"Warning : High energy consumption detected.";
+
+}
+else{
+
+document.getElementById("warnings")
+.innerHTML =
+"No warnings detected.";
+
+}
 
 updateChart(labels,values);
 
@@ -720,9 +894,7 @@ updateChart(labels,values);
 function updateChart(labels,data){
 
 const ctx =
-document.getElementById(
-"energyChart"
-);
+document.getElementById("energyChart");
 
 if(chart){
 chart.destroy();
@@ -742,270 +914,19 @@ label:'Energy Consumption (kWh)',
 
 data:data,
 
-backgroundColor:[
-
-'#38bdf8',
-'#22c55e',
-'#facc15',
-'#fb7185',
-'#a78bfa',
-'#f97316',
-'#14b8a6'
-
-],
-
-borderRadius:12
+backgroundColor:'#38bdf8'
 
 }]
 
 },
 
 options:{
-
-responsive:true,
-
-plugins:{
-
-legend:{
-labels:{
-color:'white'
-}
-}
-
-},
-
-scales:{
-
-x:{
-ticks:{
-color:'white'
-},
-grid:{
-color:'#16315f'
-}
-},
-
-y:{
-ticks:{
-color:'white'
-},
-grid:{
-color:'#16315f'
-}
-}
-
-}
-
+responsive:true
 }
 
 });
 
 }
-
-// SOLAR PATH
-
-function drawSolarPath(){
-
-const canvas =
-document.getElementById(
-"solarPathCanvas"
-);
-
-const ctx =
-canvas.getContext("2d");
-
-canvas.width =
-canvas.offsetWidth;
-
-canvas.height = 420;
-
-ctx.clearRect(
-0,
-0,
-canvas.width,
-canvas.height
-);
-
-ctx.fillStyle = "#081325";
-
-ctx.fillRect(
-0,
-0,
-canvas.width,
-canvas.height
-);
-
-const centerX =
-canvas.width / 2;
-
-const centerY = 350;
-
-const radius = 280;
-
-// ARC
-
-ctx.beginPath();
-
-ctx.strokeStyle = "#38bdf8";
-
-ctx.lineWidth = 5;
-
-ctx.arc(
-centerX,
-centerY,
-radius,
-Math.PI,
-2 * Math.PI
-);
-
-ctx.stroke();
-
-// TIME
-
-const now = new Date();
-
-let hour =
-now.getHours()
-+
-(now.getMinutes()/60);
-
-const sunrise = 6;
-const sunset = 18;
-
-let progress =
-(hour - sunrise)
-/
-(sunset - sunrise);
-
-if(progress < 0){
-progress = 0;
-}
-
-if(progress > 1){
-progress = 1;
-}
-
-const angle =
-Math.PI + (Math.PI * progress);
-
-// SUN POSITION
-
-const sunX =
-centerX
-+
-Math.cos(angle) * radius;
-
-const sunY =
-centerY
-+
-Math.sin(angle) * radius;
-
-// GLOW
-
-ctx.beginPath();
-
-ctx.fillStyle =
-"rgba(250,204,21,0.25)";
-
-ctx.arc(
-sunX,
-sunY,
-60,
-0,
-Math.PI*2
-);
-
-ctx.fill();
-
-// SUN
-
-ctx.beginPath();
-
-ctx.fillStyle = "#facc15";
-
-ctx.arc(
-sunX,
-sunY,
-28,
-0,
-Math.PI*2
-);
-
-ctx.fill();
-
-// LABELS
-
-ctx.fillStyle = "white";
-
-// SUNRISE
-
-ctx.font = "24px Arial";
-
-ctx.fillText(
-"🌅 Sunrise",
-70,
-330
-);
-
-ctx.font = "20px Arial";
-
-ctx.fillStyle = "#cbd5e1";
-
-ctx.fillText(
-"06:00",
-95,
-360
-);
-
-// SOLAR PEAK
-
-ctx.fillStyle = "white";
-
-ctx.font = "24px Arial";
-
-ctx.fillText(
-"☀️ Solar Peak",
-(centerX)-90,
-70
-);
-
-ctx.font = "20px Arial";
-
-ctx.fillStyle = "#cbd5e1";
-
-ctx.fillText(
-"12:00",
-(centerX)-10,
-100
-);
-
-// SUNSET
-
-ctx.fillStyle = "white";
-
-ctx.font = "24px Arial";
-
-ctx.fillText(
-"🌇 Sunset",
-canvas.width-210,
-330
-);
-
-ctx.font = "20px Arial";
-
-ctx.fillStyle = "#cbd5e1";
-
-ctx.fillText(
-"18:00",
-canvas.width-150,
-360
-);
-
-}
-
-setInterval(drawSolarPath,1000);
-
-drawSolarPath();
 
 </script>
 
